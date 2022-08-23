@@ -1,11 +1,28 @@
 
 const express = require('express'),
     morgan = require('morgan'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    uuid = require('uuid');
+
 
 const app = express();
 
-let topMovies = [
+const users = [
+  {  id: 1,
+    userName: 'massouty22',
+    password:'666666666',
+    email:'massouty@outlook.com',
+    favoriteMovie :'gone with the wind'
+},
+ {  id: 2 ,
+    userName: 'mona linda',
+    password:'de555',
+    email:'mona1970@outlook.com',
+    favoriteMovie :'peace and war'
+  }
+]
+
+let movies = [
   {
     title: 'The Shawshank Redemption',
     story:'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
@@ -98,9 +115,48 @@ app.get('/documentation', (req, res) => {
 app.get('/index', (req, res) => {                  
   res.sendFile('public/index.html', { root: __dirname });
 });
+//get all movies
 
 app.get('/movies', (req, res) => {
-  res.json(topMovies);
+  res.json(movies);
+});
+//get movies/:title
+app.get('/movies/:title',(req,res)=>{res.json(movies.find((movie)=>{return movie.title === req.params.title}));
+});
+//get movies/:story
+app.get('/movies/:story',(req,res)=>{res.json(movies.find((movie)=>{return movie.story === req.params.story}));
+});
+//get movies/:director
+app.get('/movies/:director',(req,res)=>{res.json(movies.find((movie)=>{return movie.director === req.params.director}));
+});
+//get movies/:stars
+app.get('/movies/:stars',(req,res)=>{res.json(movies.find((movie)=>{return movie.stars === req.params.stars}));
+});
+//get movies/:title/:director/:stars
+app.get('/movies/:title/:director/:stars',(req,res)=>{const movie = movies.find((movie)=>{return movie.title === req.params.title});
+return movie.director === req.params.director ; return movie.stars === req.params.stars ;
+res.send('movie :' + req.params.title + 'its director was' + req.params.director + ' and its stars were ' + req.params.stars);
+  });
+// Adds data for a new movie to our list of movies.
+app.post('/movies', (req, res) => {
+  let newMovie = req.body;
+
+  if (!newMovie.title) {
+    const message = 'Missing movie title in request body';
+    res.status(400).send(message);
+  } else {
+    movies.push(newMovie);
+    res.status(201).send(newMovie);
+  }
+});
+// delete one movie by its title
+app.delete('/movies/:title', (req, res) => {
+  let movie = movies.find ((movie) => { return movie.title === req.params.title });
+
+  if (movie) {
+    movies = movies.filter((obj) => { return obj.title !== req.params.title });
+    res.status(201).send('Movie :' + req.params.title + ' was deleted.');
+  }
 });
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
@@ -110,7 +166,7 @@ app.use(express.static('public')); // Automatically routes all requests for stat
 app.use(bodyParser.json()); // support parsing of application/json type post data
 app.use(bodyParser.urlencoded({ extended: true })); //support parsing of application/x-www-form-urlencoded post data
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
