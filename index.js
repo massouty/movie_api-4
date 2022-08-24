@@ -15,7 +15,7 @@ const users = [
     favoriteMovie :'gone with the wind'
 },
  {  id: 2 ,
-    userName: 'mona linda',
+    rName: 'mona linda',
     password:'de555',
     email:'mona1970@outlook.com',
     favoriteMovie :'peace and war'
@@ -24,83 +24,85 @@ const users = [
 
 let movies = [
   {
-    title: 'The Shawshank Redemption',
-    story:'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-    director: 'Frank Darabont',
-    stars: 'Tim Robbins-Morgan Freeman-Bob Gunton'
+    "title": 'The Shawshank Redemption',
+    "genre": {
+      "name": 'drama'
+    },
+    "story":'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+    "director": {
+      "name":"Frank Darabont"
+    },
+    "stars": 'Tim Robbins- Morgan Freeman- Bob Gunton'
 
   },
   {
-    title: 'Al-arraab',
-    story:'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.',
-    director: 'Francis Ford Coppola',
-    stars: 'Marlon Brando - Al Pacino -James Caan'
+    "title": 'Al-arraab',
+   "genre": {
+      "name": 'action'
+    },
+  
+    "story":'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.',
+    "director": {
+      "name":'Francis Ford Coppola'
+    },
+    "stars": 'Marlon Brando - Al Pacino -James Caan'
 
   },
   {
-    title: 'The Dark Knight',
-    story:'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
-    director: 'Christopher Nolan',
-    stars: 'christian Bale - Heath Ledger - Aaron Eckhart'
+    "title": 'The Dark Knight',
+   "genre": {
+      "name": 'drama'
+    },
+    "story":'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
+    "director": {
+      "name":'Christopher Nolan'
+    },
+    "stars": 'christian Bale - Heath Ledger - Aaron Eckhart'
 
   },
   {
-    title: 'The Matrix',
-    story:'When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.',
-    director: 'Lana Wachowski - Lilly Wachowski',
-    stars: 'Keanu Reeves - Laurence Fishburne - Carrie-Anne Moss'
+    "title": 'The Matrix',
+    "genre": {
+      "name": 'action'
+    },
+    "story":'When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.',
+    "director": { 
+      "name":'Lana  Wachowski'
+    },
+    "stars": 'Keanu Reeves - Laurence Fishburne - Carrie-Anne Moss'
 
   },
   {
-    title: ' Gladiator',
-    story:'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
-    director: 'Ridley Scott',
-    stars: 'Russell Crowe -Joaquin Phoenix - Connie Nielsen'
+    "title": ' Gladiator',
+    "genre": {
+      "name": 'action'
+    },
+    "story":'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
+    "director": { "name":'Ridley Scott'
+  },
+    "stars": 'Russell Crowe -Joaquin Phoenix - Connie Nielsen'
 
 
   },
   {
-    title: 'Casablanca',
-    story:'A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.',
-    director: 'Michael Curtiz',
-    stars: 'Humphrey Bogart - Ingrid Bergman - Paul Henreid'
-
+    "title": 'Casablanca',
+  "genre": {
+      "name": 'drama'
+    },
+   "story":'A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.',
+    "director": { "name":'Michael Curtiz'},
+    "stars": 'Humphrey Bogart - Ingrid Bergman - Paul Henreid'
   },
   {
-    title: 'Braveheart',
-    story:'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.',
-    director: 'Mel Gibson',
-    stars: 'Mel Gibson - Sophie Marceau - Patrick McGoohan'
-
+    "title": 'Braveheart',
+   "genre": {
+      "name": 'action'
+    },
+    "story":'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.',
+    "director": { "name":'Mel Gibson'},
+    "stars": 'Mel Gibson - Sophie Marceau - Patrick McGoohan'
   },
-  {
-    title: 'Casino',
-    story:'A tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive compete against each other over a gambling empire, and over a fast-living and fast-loving socialite.',
-    director: 'Martin Scorsese',
-    stars: 'Robert De Niro - Sharon Stone - Joe Pesci'
 
-  },
-  {
-    title: 'Jurassic Park',
-    story:"A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose",
-    director: 'Steven Spielberg',
-    stars: 'Sam Neill -Laura Dern - Jeff Goldblum'
-
-  },
-  {
-    title: 'Chinatown',
-    story:'A private detective hired to expose an adulterer in 1930s Los Angeles finds himself caught up in a web of deceit, corruption, and murder.',
-    director: 'Roman Polanski',
-    stars: 'Jack Nicholson - Faye Dunaway - John Huston'
-
-  },
-  {
-    title: 'The Terminator',
-    story:"A human soldier is sent from 2029 to 1984 to stop an almost indestructible cyborg killing machine, sent from the same year, which has been programmed to execute a young woman whose unborn son is the key to humanity's future salvation.",
-    director: 'James Cameron',
-    stars: 'Arnold Schwarzenegger - Linda Hamilton - Michael Biehn'
-
-  },
 ];
 
 // GET requests
@@ -123,20 +125,15 @@ app.get('/movies', (req, res) => {
 //get movies/:title
 app.get('/movies/:title',(req,res)=>{res.json(movies.find((movie)=>{return movie.title === req.params.title}));
 });
-//get movies/:story
-app.get('/movies/:story',(req,res)=>{res.json(movies.find((movie)=>{return movie.story === req.params.story}));
-});
-//get movies/:director
-app.get('/movies/:director',(req,res)=>{res.json(movies.find((movie)=>{return movie.director === req.params.director}));
+
+//get movies/director
+app.get('/movies/director/:directorName',(req,res)=>{const {directorName} = req.params;
+const director = movies.find(movie=> movie.director.name === directorName);
+if(director){res.status(200).json(director);}else{res.status(400).send('no such director');}
 });
 //get movies/:stars
 app.get('/movies/:stars',(req,res)=>{res.json(movies.find((movie)=>{return movie.stars === req.params.stars}));
 });
-//get movies/:title/:director/:stars
-app.get('/movies/:title/:director/:stars',(req,res)=>{const movie = movies.find((movie)=>{return movie.title === req.params.title});
-return movie.director === req.params.director ; return movie.stars === req.params.stars ;
-res.send('movie :' + req.params.title + 'its director was' + req.params.director + ' and its stars were ' + req.params.stars);
-  });
 // Adds data for a new movie to our list of movies.
 app.post('/movies', (req, res) => {
   let newMovie = req.body;
