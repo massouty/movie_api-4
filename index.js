@@ -17,7 +17,7 @@ const users = [
 },
  {  id: 2 ,
   name :"Mona Aladeeb",
-    rName: 'mona22',
+    userName: 'mona22',
     password:'de555',
     email:'mona1970@outlook.com',
     favoriteMovie :'peace and war'
@@ -175,8 +175,28 @@ app.delete('/movies/:title', (req, res) => {
 });
 //get all users
 
-app.get('/movies', (req, res) => {
-  res.json(movies);
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+//get users/:id
+app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id === req.params.id}));
+});
+// get  users/:userName
+app.get('/users/:userName',(req,res)=>{const {userName} = req.params;
+const users = users.find(user => user.username === userName).user;
+if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
+});
+//get  users/:name
+app.get('/users/:name',(req,res)=>{const {name} = req.params;
+const users = users.find(user => user.name === name).user;
+if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
+});
+
+//get  users/:favoriteMovie
+app.get('/users/:favoriteMovie',(req,res)=>{const {favoriteMovie} = req.params;
+const users = users.find(user => user.favoriteMovie === favoriteMovie).user;
+if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
