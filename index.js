@@ -33,7 +33,7 @@ let movies = [
       "name":"Frank Darabont"
     },
     "stars": {
-      "name":['Tim Robbins', 'Morgan Freeman', 'Bob Gunton']
+      "name":'Tim Robbins'
     },
 
   },
@@ -48,7 +48,7 @@ let movies = [
       "name":'Francis Ford Coppola'
     },
     "stars": {
-    "name" : ['Marlon Brando' , 'Al Pacino' , 'James Caan']
+    "name" : 'Marlon Brando' 
     },
 
   },
@@ -62,7 +62,7 @@ let movies = [
       "name":'Christopher Nolan'
     },
     "stars": {
-      "name":['christian Bale', 'Heath Ledger' ,'Aaron Eckhart']
+      "name":'christian Bale'
     },
 
   },
@@ -75,7 +75,7 @@ let movies = [
     "director": { 
       "name":'Lana  Wachowski'
     },
-    "stars": {"name":['Keanu Reeves','Laurence Fishburne' , 'Carrie-Anne Moss']},
+    "stars": {"name":'Keanu Reeves'},
 
   },
   {
@@ -86,7 +86,7 @@ let movies = [
     "story":'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
     "director": { "name":'Ridley Scott'
   },
-    "stars": {"name":['Russell Crowe','Joaquin Phoenix', 'Connie Nielsen']},
+    "stars": {"name":'Russell Crowe'},
 
 
   },
@@ -97,7 +97,7 @@ let movies = [
     },
    "story":'A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.',
     "director": { "name":'Michael Curtiz'},
-    "stars": {"name": ['Humphrey Bogart' ,'Ingrid Bergman' ,'Paul Henreid']},
+    "stars": {"name": 'Humphrey Bogart' },
   },
   {
     "title": 'Braveheart',
@@ -106,7 +106,7 @@ let movies = [
     },
     "story":'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.',
     "director": { "name":'Mel Gibson'},
-    "stars": {"name":['Mel Gibson', 'Sophie Marceau' , 'Patrick McGoohan']},
+    "stars": {"name":'Mel Gibson'},
   },
 
 ];
