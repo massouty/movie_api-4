@@ -3,6 +3,7 @@ const express = require('express'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     uuid = require('uuid');
+const { rest } = require('lodash');
 
 
 const app = express();
@@ -201,10 +202,20 @@ if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 
 // create newUser
 app.post('/users' , (req,res)=> {const newUser = req.body;
-if(newUser.name){newUser.id = uuid v4 ();
+if(newUser.name){
+  newUser.id = uuid.v4();
 users.push(newUser);
 res.status(201).json(newUser)}else{res.status(400).send('user needs name')}
 });
+
+//update user
+app.put('/users/:id', (req,res)=> {const{id}= req.params;
+const updateUser = req.body;
+let user = users.find(user => user.id ==id);
+if(user){user.name = updateUser.name;
+rest.status(200).json(user);}else{res.status(400).send('no such user')}
+});
+
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
 
