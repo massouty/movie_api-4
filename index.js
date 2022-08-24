@@ -9,13 +9,15 @@ const app = express();
 
 const users = [
   {  id: 1,
+    name: 'Yousef Almassouty',
     userName: 'massouty22',
     password:'666666666',
     email:'massouty@outlook.com',
     favoriteMovie :'gone with the wind'
 },
  {  id: 2 ,
-    rName: 'mona linda',
+  name :"Mona Aladeeb",
+    rName: 'mona22',
     password:'de555',
     email:'mona1970@outlook.com',
     favoriteMovie :'peace and war'
@@ -170,6 +172,11 @@ app.delete('/movies/:title', (req, res) => {
     movies = movies.filter((obj) => { return obj.title !== req.params.title });
     res.status(201).send('Movie :' + req.params.title + ' was deleted.');
   }
+});
+//get all users
+
+app.get('/movies', (req, res) => {
+  res.json(movies);
 });
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
