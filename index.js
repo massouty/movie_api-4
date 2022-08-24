@@ -183,8 +183,8 @@ app.get('/users', (req, res) => {
 app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id === req.params.id}));
 });
 // get  users/:userName
-app.get('/users/:userName',(req,res)=>{const {userName} = req.params;
-const users = users.find(user => user.username === userName).user;
+app.get('/users/:username',(req,res)=>{const {username} = req.params;
+const users = users.find(user => user.username === username).user;
 if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 //get  users/:name
