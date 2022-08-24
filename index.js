@@ -32,7 +32,9 @@ let movies = [
     "director": {
       "name":"Frank Darabont"
     },
-    "stars": 'Tim Robbins- Morgan Freeman- Bob Gunton'
+    "stars": {
+      "name":['Tim Robbins', 'Morgan Freeman', 'Bob Gunton']
+    },
 
   },
   {
@@ -45,7 +47,9 @@ let movies = [
     "director": {
       "name":'Francis Ford Coppola'
     },
-    "stars": 'Marlon Brando - Al Pacino -James Caan'
+    "stars": {
+    "name" : ['Marlon Brando' , 'Al Pacino' , 'James Caan']
+    },
 
   },
   {
@@ -57,7 +61,9 @@ let movies = [
     "director": {
       "name":'Christopher Nolan'
     },
-    "stars": 'christian Bale - Heath Ledger - Aaron Eckhart'
+    "stars": {
+      "name":['christian Bale', 'Heath Ledger' ,'Aaron Eckhart']
+    },
 
   },
   {
@@ -69,7 +75,7 @@ let movies = [
     "director": { 
       "name":'Lana  Wachowski'
     },
-    "stars": 'Keanu Reeves - Laurence Fishburne - Carrie-Anne Moss'
+    "stars": {"name":['Keanu Reeves','Laurence Fishburne' , 'Carrie-Anne Moss']},
 
   },
   {
@@ -80,7 +86,7 @@ let movies = [
     "story":'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
     "director": { "name":'Ridley Scott'
   },
-    "stars": 'Russell Crowe -Joaquin Phoenix - Connie Nielsen'
+    "stars": {"name":['Russell Crowe','Joaquin Phoenix', 'Connie Nielsen']},
 
 
   },
@@ -91,7 +97,7 @@ let movies = [
     },
    "story":'A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.',
     "director": { "name":'Michael Curtiz'},
-    "stars": 'Humphrey Bogart - Ingrid Bergman - Paul Henreid'
+    "stars": {"name": ['Humphrey Bogart' ,'Ingrid Bergman' ,'Paul Henreid']},
   },
   {
     "title": 'Braveheart',
@@ -100,7 +106,7 @@ let movies = [
     },
     "story":'Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.',
     "director": { "name":'Mel Gibson'},
-    "stars": 'Mel Gibson - Sophie Marceau - Patrick McGoohan'
+    "stars": {"name":['Mel Gibson', 'Sophie Marceau' , 'Patrick McGoohan']},
   },
 
 ];
@@ -126,14 +132,24 @@ app.get('/movies', (req, res) => {
 app.get('/movies/:title',(req,res)=>{res.json(movies.find((movie)=>{return movie.title === req.params.title}));
 });
 
-//get movies/director
+//get movies/director/:directorName
 app.get('/movies/director/:directorName',(req,res)=>{const {directorName} = req.params;
-const director = movies.find(movie=> movie.director.name === directorName);
+const director = movies.find(movie => movie.director.name === directorName);
 if(director){res.status(200).json(director);}else{res.status(400).send('no such director');}
 });
-//get movies/:stars
-app.get('/movies/:stars',(req,res)=>{res.json(movies.find((movie)=>{return movie.stars === req.params.stars}));
+
+//get movies/genre/:genreName
+app.get('/movies/genre/:genreName',(req,res)=>{const {genreName} = req.params;
+const genre = movies.find(movie => movie.genre.name === genreName).genre;
+if(genre){res.status(200).json(genre);}else{res.status(400).send('no such genre');}
 });
+
+// get  movies/stars/:starsName
+app.get('/movies/stars/:starsName',(req,res)=>{const {starsName} = req.params;
+const stars = movies.find(movie => movie.stars.name === starsName).stars;
+if(stars){res.status(200).json(stars);}else{res.status(400).send('no such genre');}
+});
+
 // Adds data for a new movie to our list of movies.
 app.post('/movies', (req, res) => {
   let newMovie = req.body;
