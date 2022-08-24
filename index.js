@@ -190,13 +190,20 @@ if(username){res.status(200).json(user);}else{res.status(400).send('no such user
 //get  users/:name
 app.get('/users/:name',(req,res)=>{const {name} = req.params;
 const users = users.find(user => user.name === name);
-if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
+if(name){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 
 //get  users/:favoriteMovie
 app.get('/users/:favoriteMovie',(req,res)=>{const {favoriteMovie} = req.params;
 const users = users.find(user => user.favoriteMovie === favoriteMovie).user;
 if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
+});
+
+// create newUser
+app.post('/users' , (req,res)=> {const newUser = req.body;
+if(newUser.name){newUser.id = uuid v4 ();
+users.push(newUser);
+res.status(201).json(newUser)}else{res.status(400).send('user needs name')}
 });
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
