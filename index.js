@@ -182,14 +182,14 @@ app.get('/users', (req, res) => {
 //get users/:id
 app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id === req.params.id}));
 });
-// get  users/:userName
+// get  users/:username
 app.get('/users/:username',(req,res)=>{const {username} = req.params;
-const users = users.find(user => user.username === username).user;
-if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
+const users = users.find(user => user.username === username);
+if(username){res.status(200).json(user);}else{res.status(400).send('no such username');}
 });
 //get  users/:name
 app.get('/users/:name',(req,res)=>{const {name} = req.params;
-const users = users.find(user => user.name === name).user;
+const users = users.find(user => user.name === name);
 if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 
