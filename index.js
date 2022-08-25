@@ -181,7 +181,10 @@ app.get('/users', (req, res) => {
 });
 
 //get users/:id
-app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id == req.params.id}));
+app.get('/users/:id',(req,res)=>{const {id} = req.params;
+const user = users.find(user => user.id === id);
+if(user){res.status(200).send(user);}
+else{res.status(400).send('no such user ')}
 });
 // get  users/:username
 app.get('/users/:username',(req,res)=>{const {username} = req.params;
@@ -191,7 +194,7 @@ if(username){res.status(200).json(user);}else{res.status(400).send('no such user
 //get  users/:name
 app.get('/users/:name',(req,res)=>{const {name} = req.params;
 const user = users.find(user => user.name === name);
-if(name){res.status(200).json(user);}else{res.status(400).send('no such user');}
+if(user){res.status(200).send(user);}else{res.status(400).send('no such user');}
 });
 
 //get  users/:favoriteMovie
