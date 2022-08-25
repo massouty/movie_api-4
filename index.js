@@ -17,7 +17,8 @@ const users = [
     "email":'massouty@outlook.com',
     "favoriteMovie" :""
 },
- {  "id":2 ,
+ {  
+  "id": 2 ,
     "fullName" :"Mona Aladeeb",
     "username": 'mona22',
     "password":'de555',
@@ -182,7 +183,7 @@ app.get('/users', (req, res) => {
 });
 
 //get users/:id
-app.get('/users/:id',(req,res)=>{const {id} = req.params;
+app.get('/users/:id', (req,res)=>{const {id} = req.params;
 const user = users.find(user => user.id === id);
 if(user){res.status(200).send(user);}
 else{res.status(400).send('no such user')}
