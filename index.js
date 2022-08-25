@@ -11,14 +11,14 @@ const app = express();
 const users = [
   {  "id": 1,
     "name": 'Yousef Almassouty',
-    "userName": 'massouty22',
+    "username": 'massouty22',
     "password":'666666666',
     "email":'massouty@outlook.com',
     "favoriteMovie" :""
 },
  {  "id": 2 ,
     "name" :"Mona Aladeeb",
-    "userName": 'mona22',
+    "username": 'mona22',
     "password":'de555',
     "email":'mona1970@outlook.com',
     "favoriteMovie" :'peace and war'
@@ -185,18 +185,18 @@ app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id == 
 });
 // get  users/:username
 app.get('/users/:username',(req,res)=>{const {username} = req.params;
-const users = users.find(user => user.username === username);
+const user = users.find(user => user.username === username);
 if(username){res.status(200).json(user);}else{res.status(400).send('no such username');}
 });
 //get  users/:name
 app.get('/users/:name',(req,res)=>{const {name} = req.params;
-const users = users.find(user => user.name === name);
+const user = users.find(user => user.name === name);
 if(name){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 
 //get  users/:favoriteMovie
 app.get('/users/:favoriteMovie',(req,res)=>{const {favoriteMovie} = req.params;
-const users = users.find(user => user.favoriteMovie === favoriteMovie).user;
+const user = users.find(user => user.favoriteMovie === favoriteMovie).user;
 if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 
@@ -222,6 +222,19 @@ let user = users.find(user => user.id == id);
 if(user){user.favoriteMovie.push(movieTitle);
 res.status(200).send('${movieName} has been added to user')}
 });
+
+// delet user by id
+
+app.delete('/user/:id',(req,res)=> {const{id} = req.params;
+let user = users.find(user => user.id != id);res.status(200).send('user ${id} has been deleted');
+});
+
+// delet user by email
+
+app.delete('/user/:email',(req,res)=> {const{email} = req.params;
+let user = users.find(user => user.email != email);res.status(200).send('user ${email} has been deleted');
+});
+
 
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
