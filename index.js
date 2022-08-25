@@ -10,7 +10,21 @@ const app = express();
 
 app.use(bodyParser.json()); // support parsing of application/json type post data
 
-const users = []
+const users = [
+  {
+    "id":1,
+    "username":"kim",
+    "password":"frank45",
+    "favoriteMovie":"The Dark Knight"
+  },
+  {
+    "id":2,
+    "username":"lee",
+    "password":"lewis45",
+    "favoriteMovie":"The Matrix"
+  }
+
+];
 
 let movies = [
   {
@@ -169,7 +183,7 @@ app.get('/users', (req, res) => {
 
 // create newUser
 app.post('/users' , (req,res)=> {const newUser = req.body;
-if(newUser.name){
+if(newUser.username){
   newUser.id = uuid.v4();
 users.push(newUser);
 res.status(201).json(newUser)}else{res.status(400).send('user needs name')}
