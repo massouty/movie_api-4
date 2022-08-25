@@ -8,9 +8,9 @@ const { rest } = require('lodash');
 
 const app = express();
 
+app.use(bodyParser.json()); // support parsing of application/json type post data
+
 const users = []
-    
-       
 
 let movies = [
   {
@@ -222,7 +222,7 @@ app.use(morgan('combined')); // setup the logger, Mildware function to the termi
 
 app.use(express.static('public')); // Automatically routes all requests for static files to their corresponding files within a certain folder on the server.
 
-app.use(bodyParser.json()); // support parsing of application/json type post data
+
 app.use(bodyParser.urlencoded({ extended: true })); //support parsing of application/x-www-form-urlencoded post data
 
 app.use((err, req, res) => {
