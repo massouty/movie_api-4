@@ -225,13 +225,13 @@ res.status(200).send('${movieName} has been added to user')}
 
 // delet user by id
 
-app.delete('/user/:id',(req,res)=> {const{id} = req.params;
+app.delete('/users/:id',(req,res)=> {const{id} = req.params;
 let user = users.find(user => user.id != id);res.status(200).send('user ${id} has been deleted');
 });
 
 // delet user by email
 
-app.delete('/user/:email',(req,res)=> {const{email} = req.params;
+app.delete('/users/:email',(req,res)=> {const{email} = req.params;
 let user = users.find(user => user.email != email);res.status(200).send('user ${email} has been deleted');
 });
 
