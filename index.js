@@ -192,8 +192,8 @@ const user = users.find(user => user.username === username);
 if(user){res.status(200).send(user);}else{res.status(400).send('no such username');}
 });
 //get  users/:name
-app.get('/users/:name',(req,res)=>{const {name} = req.params;
-const user = users.find(user => user.name === name);
+app.get('/users/:title',(req,res)=>{const {title} = req.params;
+const user = users.find(user => user.name === title);
 if(user){res.status(200).send(user);}else{res.status(400).send('no such user');}
 });
 
