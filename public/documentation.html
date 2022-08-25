@@ -65,6 +65,210 @@
           <a href="#" class="button1" download target="blank">Watch Our Comedy Movies </a>
         </div>
       </div><br>
+      <div>
+        <table class="description-table">
+    <tr>
+      <th>Business Logic</th>
+      <th>HTTP Method</th>
+      <th>Request</th>
+      <th>URL</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>Return a list of ALL movies to the user</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/movies</td>
+      <td>A JSON object containing data from every movie</td>
+    </tr>
+    <tr>
+      <td>Return data about a single movie by title to the user</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/movies/:movieTitle</td>
+      <td>A JSON object containing all data about a single movie including its description, genre, director, image URL and whether it's featured or not
+<span class="example-text">
+{
+  "Genre": {
+      "Name": "drama",
+      
+  },
+  "Director": {
+      "Name": "Christopher Nolan",
+      
+  },
+  "_id": "62e9a4a8e4da723567a25c54",
+  "Title": "Joker",
+  "Description": "Updated: A mentally troubled stand-up comedian embarks on a downward spiral that leads to the creation of an iconic villain.",
+  "ReleaseYear": 2019,
+  "ImageURL": "https://upload.wikimedia.org/wikipedia/en/e/e1/Joker_%282019_film%29_poster.jpg",
+  "Featured": false,
+  "Stars": [
+      "Joaquin Phoenix",
+      "Robert De Niro",
+      "Zazie Beetz"
+  ]
+}
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Return data about a genre by name</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/movies/genre/genreName</td>
+      <td>A JSON object containing all data about a single genre including its name (e.g., "Thriller") and description
+<span class="example-text">
+{
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Return data about a director by name</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/movies/directors/:directorName</td>
+      <td>A JSON object containing all data about a single director including name, bio and birth year
+<span class="example-text">
+{
+ 
+  "Name": "Todd Phillips",
+ 
+}
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Return data about one or more movies by release year</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/movies/year/:ReleaseYear</td>
+      <td>A JSON object containing all data about one or more movies including the description, genre, director, image URL and featured status
+<span class="example-text">
+[
+  {
+    "Genre": {
+        "Name": "Drama",
+        
+    "Director": {
+        "Name": "Kenny Ortega",
+       
+    },
+   
+    "Title": "Newsies",
+    "Description": "A musical based on the New York City newsboy strike of 1899. When young newspaper sellers are exploited beyond reason by their bosses they set out to enact change and are met by the ruthlessness of big business.",
+    "ReleaseYear": 1992,
+    "ImageURL": "https://upload.wikimedia.org/wikipedia/en/5/53/Newsies-Poster.jpg",
+    "Featured": false,
+    "Stars": [
+        "Christian Bale",
+        "Bill Pullman",
+        "Robert Duvall"
+    ]
+  }
+]
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Return a list with the data of all registered users</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/users</td>
+      <td>A JSON object containing an array of all users and their data including usernames, 
+        passwords, emails, birthdays and favortie-movie arrays
+      </td>
+    </tr>
+    <tr>
+      <td>Return all data from a specific registered user</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/users/:username</td>
+      <td>A JSON object containing a specific user's data including their name, 
+        password, email,  and favorite-movie array
+<span class="example-text">
+{
+  "_id": "c4420246-4c65-4e6a-8ed2-e5e15de222ea",
+  "username": "look43",
+  "password": "love45",
+  ,
+  "favoriteMovie": "love boat"
+  
+}
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Return the titles of any favorite movies that a user may have</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>/users/:username/favoriteMovies</td>
+      <td>A JSON object containing an array of every movie title that a specific user has added to their favorites list
+<span class="example-text">
+[
+  "62e9a5b4e4da723567a25c56",
+  "62e9a5e2e4da723567a25c58"
+]
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Allow new users to register</td>
+      <td>POST</td>
+      <td>JSON object holding data about the new user including their username, password, email and birthday
+<span class="example-text">
+{
+  "username": "loe",
+  "Password": "de77",
+  
+</span>
+      </td>
+      <td>/users</td>
+      <td>A text message indicating whether or not the new user was successfully added</td>
+    </tr>
+    <tr>
+      <td>Allow users to update their user info</td>
+      <td>PUT</td>
+      <td>A JSON object containing data about a specific field that will be used to 
+        update that same field in the specified user's current data 
+<span class="example-text">
+{
+  "Username": "look43"
+}
+</span>
+      </td>
+      <td>/users/:username</td>
+      <td>A JSON object containing data about the user including their id and the new username
+<span class="example-text">
+  {
+    
+   
+}
+</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Allow users to add a movie to their list of favorites</td>
+      <td>POST</td>
+      <td>None</td>
+      <td>/users/:username/movies/:movieID</td>
+      <td>A text message indicating whether or not the movie was successfully added to the user's array</td>
+    </tr>
+    <tr>
+      <td>Allow users to remove a movie from their list of favorites</td>
+      <td>DELETE</td>
+      <td>None</td>
+      <td>/movies/:id</td>
+      <td>A text message indicating whether or not the movie was successfully removed from the user's array</td>
+    </tr>
+    <tr>
+      <td>Allow existing users to deregister</td>
+      <td>DELETE</td>
+      <td>None</td>
+      <td>/users/:name</td>
+      <td>A text message indicating whether or not the user's data has been successfully deleted</td>
+    </tr>
+  </table>
     
 
         <footer class="footer-page">
@@ -90,6 +294,7 @@
                     </svg></a>
 
             </div>
+            
 
         </footer>
 
