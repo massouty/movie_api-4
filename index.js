@@ -190,11 +190,12 @@ res.status(201).json(newUser)}else{res.status(400).send('user needs name')}
 });
 
 //get users/:id
-app.get('/users/:id', (req,res)=> {const {id}= req.params;
-let user = users.find(user => user.id === id);
+app.get('/users/:id',(req,res)=>{const {id} = req.params;
+let user = users.find(user => user.id == id);
 if(user){res.status(200).send(user);}
 else{res.status(400).send('no such user');}
 });
+
 
 //get  users/:favoriteMovie
 app.get('/users/:favoriteMovie',(req,res)=>{const {favoriteMovie} = req.params;
@@ -206,7 +207,7 @@ if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 //update user
 app.put('/users/:id', (req,res)=> {const{id}= req.params;
 const updateUser = req.body;
-let user = users.find(user => user.id ==id);
+let user = users.find(user => user.id == id);
 if(user){user.name = updateUser.name;
 rest.status(200).json(user);}else{res.status(400).send('no such user')}
 });
