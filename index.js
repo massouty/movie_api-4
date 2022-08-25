@@ -13,13 +13,13 @@ app.use(bodyParser.json()); // support parsing of application/json type post dat
 const users = [
   {
     "id":1,
-    "username":"kim",
+    "name":"kim",
     "password":"frank45",
     "favoriteMovie":"The Dark Knight"
   },
   {
     "id":2,
-    "username":"lee",
+    "name":"lee",
     "password":"lewis45",
     "favoriteMovie":""
   }
@@ -183,7 +183,7 @@ app.get('/users', (req, res) => {
 
 // create newUser
 app.post('/users' , (req,res)=> {const newUser = req.body;
-if(newUser.username){
+if(newUser.name){
   newUser.id = uuid.v4();
 users.push(newUser);
 res.status(201).json(newUser)}else{res.status(400).send('user needs name')}
