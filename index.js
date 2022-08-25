@@ -11,7 +11,7 @@ const app = express();
 const users = [
   { 
      "id": 1,
-    "fullName": 'Yousef  Almassouty',
+    "fullName": 'Yousef Almassouty',
     "username": 'massouty22',
     "password":'666666666',
     "email":'massouty@outlook.com',
@@ -185,17 +185,7 @@ app.get('/users', (req, res) => {
 app.get('/users/:id',(req,res)=>{const {id} = req.params;
 const user = users.find(user => user.id === id);
 if(user){res.status(200).send(user);}
-else{res.status(400).send('no such user ')}
-});
-// get  users/:username
-app.get('/users/:username',(req,res)=>{const {username} = req.params;
-const user = users.find(user => user.username === username);
-if(user){res.status(200).json(user);}else{res.status(400).send('no such username');}
-});
-//get  users/:name
-app.get('/users/:fullName',(req,res)=>{const {fullName} = req.params;
-const user = users.find(user => user.fullName === fullName);
-if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
+else{res.status(400).send('no such user')}
 });
 
 //get  users/:favoriteMovie
