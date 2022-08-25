@@ -216,6 +216,13 @@ if(user){user.name = updateUser.name;
 rest.status(200).json(user);}else{res.status(400).send('no such user')}
 });
 
+//create  favoriteMovie
+app.post('/users/:id/:movieTitle', (req,res)=>{const{id,movieTitle}= req.params;
+let user = users.find(user => user.id == id);
+if(user){user.favoriteMovie.push(movieTitle);
+res.status(200).send('${movieName} has been added to user')}
+});
+
 
 app.use(morgan('combined')); // setup the logger, Mildware function to the terminal
 
