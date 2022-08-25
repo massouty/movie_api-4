@@ -9,19 +9,19 @@ const { rest } = require('lodash');
 const app = express();
 
 const users = [
-  {  id: 1,
-    name: 'Yousef Almassouty',
-    userName: 'massouty22',
-    password:'666666666',
-    email:'massouty@outlook.com',
-    favoriteMovie :'gone with the wind'
+  {  "id": 1,
+    "name": 'Yousef Almassouty',
+    "userName": 'massouty22',
+    "password":'666666666',
+    "email":'massouty@outlook.com',
+    "favoriteMovie" :""
 },
- {  id: 2 ,
-  name :"Mona Aladeeb",
-    userName: 'mona22',
-    password:'de555',
-    email:'mona1970@outlook.com',
-    favoriteMovie :'peace and war'
+ {  "id": 2 ,
+    "name" :"Mona Aladeeb",
+    "userName": 'mona22',
+    "password":'de555',
+    "email":'mona1970@outlook.com',
+    "favoriteMovie" :'peace and war'
   }
 ]
 
@@ -181,7 +181,7 @@ app.get('/users', (req, res) => {
 });
 
 //get users/:id
-app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id === req.params.id}));
+app.get('/users/:id',(req,res)=>{res.json(users.find((user)=>{return user.id == req.params.id}));
 });
 // get  users/:username
 app.get('/users/:username',(req,res)=>{const {username} = req.params;
