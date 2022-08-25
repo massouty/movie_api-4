@@ -183,10 +183,10 @@ app.get('/users', (req, res) => {
 });
 
 //get users/:id
-app.get('/users/:id', (req,res)=>{const {id} = req.params;
+app.get('/users/:id', (req,res)=> {const {id}= req.params;
 let user = users.find(user => user.id === id);
-if(user){res.status(200).json(user);}
-else{res.status(400).send('no such user')}
+if(user){res.status(200).send(user);}
+else{res.status(400).send('no such user');}
 });
 
 //get  users/:favoriteMovie
