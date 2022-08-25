@@ -208,7 +208,7 @@ if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 app.put('/users/:id', (req,res)=> {const{id}= req.params;
 const updateUser = req.body;
 let user = users.find(user => user.id == id);
-if(user){user.name = updateUser.name;
+if(user){user.username = updateUser.username;
 rest.status(200).json(user);}else{res.status(400).send('no such user')}
 });
 
