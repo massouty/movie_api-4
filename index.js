@@ -21,7 +21,7 @@ const users = [
     "id":2,
     "username":"lee",
     "password":"lewis45",
-    "favoriteMovie":"The Matrix"
+    "favoriteMovie":""
   }
 
 ];
