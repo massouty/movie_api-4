@@ -9,15 +9,16 @@ const { rest } = require('lodash');
 const app = express();
 
 const users = [
-  {  "id":1,
-    "fullname": 'Yousef Almassouty',
+  { 
+     "id": 1,
+    "fullName": 'Yousef  Almassouty',
     "username": 'massouty22',
     "password":'666666666',
     "email":'massouty@outlook.com',
     "favoriteMovie" :""
 },
  {  "id":2 ,
-    "fullname" :"Mona Aladeeb",
+    "fullName" :"Mona Aladeeb",
     "username": 'mona22',
     "password":'de555',
     "email":'mona1970@outlook.com',
@@ -143,7 +144,7 @@ if(director){res.status(200).json(director);}else{res.status(400).send('no such 
 
 //get movies/genre/:genreName
 app.get('/movies/genre/:genreName',(req,res)=>{const {genreName} = req.params;
-const genre = movies.find(movie => movie.genre.name === genreName).genre;
+const genre = movies.find(movie => movie.genre.name === genreName);
 if(genre){res.status(200).json(genre);}else{res.status(400).send('no such genre');}
 });
 
@@ -192,8 +193,8 @@ const user = users.find(user => user.username === username);
 if(user){res.status(200).json(user);}else{res.status(400).send('no such username');}
 });
 //get  users/:name
-app.get('/users/:fullname',(req,res)=>{const {fullname} = req.params;
-const user = users.find(user => user.fullname === fullname);
+app.get('/users/:fullName',(req,res)=>{const {fullName} = req.params;
+const user = users.find(user => user.fullName === fullName);
 if(user){res.status(200).json(user);}else{res.status(400).send('no such user');}
 });
 
