@@ -17,8 +17,7 @@ const users = [
         "email": "massouty@outlook.com",
         "favoriteMovie": ""
     },
-    {
-        "id": 2,
+    {     "id": 2 ,
         "fullName": "Mona Aladeeb",
         "username": "mona22",
         "password": "de555",
