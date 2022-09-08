@@ -219,16 +219,25 @@ if(user){user.favoriteMovie.push(movieTitle);
 res.status(200).send('${movieName} has been added to user')}
 });
 
-// delet user by id
+// delete user by id
 
 app.delete('/users/:id',(req,res)=> {const{id} = req.params;
 let user = users.find(user => user.id != id);res.status(200).send('user ${id} has been deleted');
+if (user) {
+    users = users.filter((obj) => { return obj.id !== req.params.id });
+    res.status(201).send('user :' + req.params.id + ' was deleted.');
+  }
 });
 
 // delet user by email
 
 app.delete('/users/:email',(req,res)=> {const{email} = req.params;
 let user = users.find(user => user.email != email);res.status(200).send('user ${email} has been deleted');
+if (user) {
+    users = users.filter((obj) => { return obj.email !== req.params.email});
+    res.status(201).send('user :' + req.params.id + ' was deleted.');
+  }
+
 });
 
 
